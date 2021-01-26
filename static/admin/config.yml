@@ -1,0 +1,46 @@
+backend:
+  name: git-gateway
+  branch: master
+  commit_messages:
+    create: "Create {{collection}} “{{slug}}”"
+    update: "Update {{collection}} “{{slug}}”"
+    delete: "Delete {{collection}} “{{slug}}”"
+    uploadMedia: "[skip ci] Upload “{{path}}”"
+    deleteMedia: "[skip ci] Delete “{{path}}”"
+
+local_backend: true
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "src/posts"
+    create: true
+    slug: "{{slug}}"
+    extension: "mdx"
+    format: "frontmatter"
+    fields:
+      - { label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "SEO Title", name: "seoTitle", widget: "string", pattern: ["^.{0,65}$", "Can;t have more than 65 characters"] }
+      - { label: "SEO Description", name: "seoDescription", widget: "string", pattern: ["^.{0,165}$", "Can;t have more than 160 characters"] }
+      - { label: "Featured Image", name: "featuredimage", widget: image }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Modified Date", name: "moddate", widget: "datetime" }
+      - { label: "Enable Table of Contents", name: "tableofcontent", widget: "boolean", default: true }
+      - { label: "Writer", name: "writer", widget: "select", options: [{ label: "Sample Person", value: "Sample Person" }, { label: "Atif Liaqat", value: "Atif Liaqat" }], default: "Sample Person" }
+      - { label: "Category", name: "cat", widget: "select", options: [{ label: "Learning Guides", value: "Learning Guides" }, { label: "Buying Guides", value: "Buying Guides" }, { label: "News", value: "News" }, { label: "Reviews", value: "Reviews" }], default: "Buying Guides" }
+      - { label: "Enable Rating", name: "rating", widget: "boolean", default: true }
+      - { label: "Rating Count", name: "rcount", widget: "number", default: 0 }
+      - { label: "Rating Value", name: "rvalue", widget: "number", default: 5.0 }
+      - { label: "Before Body", name: "beforebody", widget: "markdown", default: "", required: false }
+      - { label: "Enable Products Table", name: "productstable", widget: "boolean", default: true }
+      - { label: "Products Table Title", name: "productstabletitle", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown", default: "", required: false }
+      - { label: "Products", name: "products", widget: "list", collapsed: false, minimum: 0, fields: [{ label: "Name", name: "name", widget: "string" }, { label: "Product Image", name: "image", widget: "image" }, { label: "Product Link", name: "link", widget: "string" }, { label: "Product Body", name: "body", widget: "markdown" }, { label: "Pros", name: "pros", widget: "list", collapsed: false, minimum: 0, field: { label: "Value", name: "pro", widget: "string" } }, { label: "Cons", name: "cons", widget: list, collapsed: false, minimum: 0, field: { label: "Value", name: "con", widget: "string" } }, { label: "Specification Table", name: "specs", widget: "list", collapsed: false, minimum: 0, fields: [{ label: "Parameter", name: "name", widget: "string" }, { label: "Value", name: "value", widget: "string" }] }] }
+      - { label: "After Body", name: "afterbody", widget: "markdown", default: "", required: false }
+      - { label: "Sidebar", name: "sidebar", widget: "object", required: false, fields: [{ label: "Table of Contents", name: "stoc", widget: list, collapsed: false, minimum: 0, fields: [{ label: "Name", name: "name", widget: "string" }, { label: "Child", name: "level", widget: "boolean", default: true }] }, { label: "Second Title", name: "stitle", widget: "string", default: "Editor's Choice", required: false }, { label: "Sidebar Image", name: "image", widget: "image", required: false }, { label: "Sidebar Link Text", name: "atext", widget: "string", required: false }, { label: "Sidebar Link Href", name: "alink", widget: "string", required: false }] }
+      - { label: "Frequently Asked Questions (OPTIONAL)", name: "faq", collapsed: false, minimum: 0, widget: list, fields: [{ label: "Question", name: "ques", widget: "string" }, { label: "Answer", name: "ans", widget: "text" }] }

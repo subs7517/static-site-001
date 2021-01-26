@@ -1,0 +1,300 @@
+.navbar {
+  position: relative;
+  z-index: 30;
+  padding: 6px 0.75rem;
+  box-shadow: var(--default-box-shadow);
+  background-color: var(--custom-color-2);
+}
+.navbar .container {
+  display: flex;
+}
+.navbar-brand {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+}
+.navbar-brand a.navbar-item:focus,
+.navbar-brand a.navbar-item:hover {
+  background-color: transparent;
+}
+.navbar-burger {
+  cursor: pointer;
+  display: block;
+  height: 3.25rem;
+  position: relative;
+  width: 3.25rem;
+  margin-left: auto;
+  background-color: var(--custom-color-5);
+  color: var(--custom-color-4);
+  border-radius: 3px;
+}
+.navbar-burger span,
+.footer-burger span {
+  background-color: currentColor;
+  display: block;
+  height: 1px;
+  left: calc(50% - 8px);
+  position: absolute;
+  transform-origin: center;
+  transition-duration: 86ms;
+  transition-property: background-color, opacity, transform;
+  transition-timing-function: ease-out;
+  width: 16px;
+}
+.navbar-burger span:nth-child(1),
+.footer-burger span:nth-child(1) {
+  top: calc(50% - 6px);
+}
+.navbar-burger span:nth-child(2),
+.footer-burger span:nth-child(2) {
+  top: calc(50% - 1px);
+}
+.navbar-burger span:nth-child(3),
+.footer-burger span:nth-child(3) {
+  top: calc(50% + 4px);
+}
+.navbar-burger:hover,
+.footer-burger:hover {
+  background-color: var(--custom-color-6);
+}
+.navbar-burger.is-active span:nth-child(1),
+.footer-burger.is-active span:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+}
+.navbar-burger.is-active span:nth-child(2),
+.footer-burger.is-active span:nth-child(2) {
+  opacity: 0;
+}
+.navbar-burger.is-active span:nth-child(3),
+.footer-burger.is-active span:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+}
+.navbar-item {
+  color: var(--custom-color-4);
+  display: block;
+  line-height: 1.5;
+  padding: 0.5rem 0.75rem;
+  position: relative;
+  font-weight: 500;
+}
+.navbar-item .icon:only-child {
+  margin-left: -0.25rem;
+  margin-right: -0.25rem;
+}
+
+a.navbar-item {
+  cursor: pointer;
+}
+a.navbar-item:focus,
+a.navbar-item:focus-within,
+a.navbar-item:hover,
+a.navbar-item.is-active {
+  background-color: var(--custom-color-6);
+}
+.navbar-item {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+div#navMenu span.navbar-item .open-parent {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  height: 100%;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div#navMenu span.navbar-item svg {
+  width: 12px;
+  transition: 0.3s ease;
+}
+div#navMenu .navbar-item.nav-parent {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+}
+div#navMenu .nav-parent .parent-data {
+  position: relative;
+}
+.nav-child {
+  display: none;
+  flex-direction: row;
+}
+.nav-child .child-sec {
+  padding: 10px;
+}
+.nav-child .child-sec a {
+  color: #fff;
+}
+.child-sec li {
+  list-style-type: none;
+}
+.nav-child .child-sec p {
+  padding: 3px;
+}
+.nav-child .child-sec li:last-child {
+  margin-bottom: 0;
+}
+.nav-child .child-sec li {
+  margin-bottom: 5px;
+}
+div#navMenu .nav-parent:hover .nav-child,
+div#navMenu .nav-parent:focus .nav-child {
+  display: flex;
+}
+div#navMenu .parent-data a.navbar-item {
+  border-bottom: 0;
+}
+.navbar-brand .logo-container {
+  height: auto;
+  display: flex;
+}
+@media screen and (max-width: 1023px) {
+  .navbar > .container {
+    display: block;
+  }
+  .navbar-brand .navbar-item {
+    align-items: center;
+    display: flex;
+  }
+  div#navMenu .navbar-end {
+    margin: 0.5rem 10px;
+    border-radius: 8px;
+    background-color: var(--custom-color-5);
+    overflow: hidden;
+  }
+  div#navMenu .navbar-item {
+    padding: 13px 20px;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+  }
+  div#navMenu .nav-parent.active .nav-child {
+    display: flex;
+  }
+  div#navMenu .navbar-item:last-child {
+    border-bottom: 0;
+  }
+  .nav-child .child-sec li {
+    border-bottom: 1px solid #fff;
+    padding-bottom: 2px;
+  }
+  .nav-child .child-sec li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  div#navMenu span.navbar-item .open-parent svg {
+    transition: 0.3s all ease-out;
+    transform: rotate(0);
+  }
+  div#navMenu span.navbar-item.active .open-parent svg {
+    transform: rotate(-90deg);
+  }
+  div#navMenu .nav-parent .nav-child {
+    flex-wrap: wrap;
+  }
+  div#navMenu span.navbar-item .open-parent {
+    width: 60px;
+    border-left: 1px solid #fff;
+  }
+  .nav-child .child-sec p {
+    border: 1px solid #fff;
+    margin-bottom: 10px;
+    padding: 3px;
+  }
+  .nav-child .child-sec {
+    border-top: 1px solid #fff;
+    width: 50%;
+    flex: auto;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .navbar,
+  .navbar-menu,
+  .navbar-start,
+  .navbar-end {
+    display: flex;
+  }
+  .navbar.is-transparent a.navbar-item:focus,
+  .navbar.is-transparent a.navbar-item:hover,
+  .navbar.is-transparent a.navbar-item.is-active {
+    background-color: transparent !important;
+  }
+  .navbar-burger {
+    display: none;
+  }
+  .navbar-item {
+    align-items: center;
+    display: flex;
+  }
+  .navbar-menu {
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+  .navbar-start {
+    justify-content: flex-start;
+    margin-right: auto;
+  }
+  .navbar-end {
+    justify-content: flex-end;
+    margin-left: auto;
+    height: 100%;
+  }
+  .navbar .container .navbar-menu {
+    margin-right: -0.75rem;
+  }
+  a.navbar-item.is-active {
+    color: #2b2523;
+  }
+  a.navbar-item.is-active:not(:focus):not(:hover) {
+    background-color: transparent;
+  }
+  div#navMenu,
+  div#navMenu .nav-child-container {
+    height: auto !important;
+    overflow: visible !important;
+  }
+  div#navMenu > div,
+  div#navMenu .nav-child-container > div {
+    display: block !important;
+  }
+  .parent-data a.navbar-item {
+    padding-right: 0;
+  }
+  div#navMenu span.navbar-item .open-parent {
+    position: static;
+  }
+  div#navMenu .nav-parent .parent-data {
+    display: flex;
+  }
+  div#navMenu .nav-parent .nav-child {
+    position: absolute;
+    background-color: var(--custom-color-1);
+    top: 50px;
+    right: -160px;
+    width: 940px;
+    border-radius: 5px;
+    box-shadow: 0 1px 8px 0 hsla(0, 0%, 58.8%, 0.72);
+    justify-content: space-evenly;
+  }
+  .nav-child .child-sec p {
+    font-weight: bold;
+  }
+  .nav-child .child-sec a {
+    color: var(--custom-color-5);
+  }
+  .nav-child .child-sec a:hover {
+    opacity: 0.8;
+  }
+  .navbar-item:hover a,
+  .navbar-item:focus a,
+  .navbar-item:hover svg,
+  .navbar-item:focus svg {
+    color: var(--custom-color-5);
+  }
+}
